@@ -117,20 +117,21 @@ const contenedor = document.querySelector(".container");
     3-añadir la imagen al DOM (header)
         creo que era con .... miralo
 */
-function imgCabecera() {
+function pintarImgCabecera() {
     const aleatoria = Math.floor(Math.random() * arrayHeader.length);
     const fotoaleatoria = arrayHeader[aleatoria];
     const imgHeader = document.createElement("img"); // crear elemento img
-    (imgHeader.setAttribute("src", fotoaleatoria.imagen), // luego añada atributos
-        imgHeader.setAttribute("alt", fotoaleatoria.alt),
-        imgHeader.setAttribute("title", fotoaleatoria.titulo),
-        cabecera.append(imgHeader)); //añada al dom -header-
+    imgHeader.setAttribute("src", fotoaleatoria.imagen); // luego añada atributos
+    imgHeader.setAttribute("alt", fotoaleatoria.alt);
+    imgHeader.setAttribute("title", fotoaleatoria.titulo);
+    cabecera.append(imgHeader); //añada al dom -header-
     // console.log(arrayHeader.length);
 }
 
 //titulo
-tituloGaleria.classList.add("nombreFotos");
-
+function estilizarTituloGaleria() {
+    tituloGaleria.classList.add("nombreFotos");
+}
 
 /* function pintar Galeria
 
@@ -148,21 +149,22 @@ tituloGaleria.classList.add("nombreFotos");
 
         añadirlo al DOM en el div flexContainer
 */
-function imgCards() {
+function pintarImgCards() {
     arrayCards.forEach((e) => {
         const card = document.createElement("div"); // div para la tarjeta
         card.classList = "card"; // clase para la tarjeta
 
         const imgCard = document.createElement("img"); // creando elemento img
-        (imgCard.setAttribute("src", e.imagen), // luego añadir atributos
-            imgCard.setAttribute("alt", e.alt),
-            imgCard.setAttribute("title", e.titulo));
+        imgCard.setAttribute("src", e.imagen); // luego añadir atributos
+        imgCard.setAttribute("alt", e.alt);
+        imgCard.setAttribute("title", e.titulo);
 
         const tit = document.createElement("h2"); // crear un titulo
         tit.textContent = `${e.titulo}`;
 
         const describir = document.createElement("p"); // creacion de descripcion
-        ((describir.textContent = `${e.descripcion}`), card.append(imgCard)); //se añade a div card la imagen
+        describir.textContent = `${e.descripcion}`;
+        card.append(imgCard); //se añade a div card la imagen
         card.append(tit); //se añade a div card el tit
         card.append(describir); //se añade a div card la descrpcion
         contenedor.append(card); // se agrega al contenedor el div de la card
@@ -171,5 +173,6 @@ function imgCards() {
 
 //INVOCAR LA FUNCION
 
-imgCabecera();
-imgCards();
+pintarImgCabecera();
+pintarImgCards();
+estilizarTituloGaleria();
